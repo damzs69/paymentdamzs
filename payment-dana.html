@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilihan Pembayaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.top4top.io/p_3463d1oft1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #00a0e1;
+            text-align: center;
+        }
+        .payment-option {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .payment-option h2 {
+            margin-top: 0;
+            color: #00a0e1;
+        }
+        .dana-number {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            background-color: #00a0e1;
+            color: white;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .copy-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+        .note {
+            font-style: italic;
+            color: #666;
+            text-align: center;
+        }
+        .contact-admin {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1>Pilihan Pembayaran</h1>
+            
+            <div class="payment-option">
+                <h2>Pembayaran via Dana</h2>
+                <p>Silahkan transfer ke nomor Dana berikut:</p>
+                <div class="dana-number" id="danaNumber">082129071128</div>
+                <button class="copy-btn" onclick="copyDanaNumber()">Salin Nomor Dana</button>
+                <p class="note">Setelah transfer, harap kirim bukti pembayaran ke admin.</p>
+            </div>
+            
+            <div class="payment-option">
+                <h2>Pembayaran via QRIS</h2>
+                <div class="contact-admin">
+                    Silahkan hubungi admin untuk meminta kode QRIS
+                </div>
+                <p class="note">Admin akan memberikan kode QRIS untuk Anda scan dan bayar.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyDanaNumber() {
+            const danaNumber = document.getElementById('danaNumber');
+            const range = document.createRange();
+            range.selectNode(danaNumber);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            
+            alert('Nomor Dana berhasil disalin: ' + danaNumber.textContent);
+        }
+    </script>
+</body>
+</html>
