@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAMZS STORE - Pembayaran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-image: url('https://a.top4top.io/p_3471rkc7l1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex: 1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .logo {
+            width: 200px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: gold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        
+        .payment-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+        }
+        
+        .payment-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .account-number {
+            font-size: 22px;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 15px 0;
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .copy-btn {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 15px 0 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .copy-btn:hover {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .qris-image {
+            width: 280px;
+            max-width: 100%;
+            display: block;
+            margin: 20px auto;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+        }
+        
+        .qris-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .instructions {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            border-left: 4px solid gold;
+        }
+        
+        .instructions-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: gold;
+            margin-bottom: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        ol {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            padding-left: 8px;
+            position: relative;
+        }
+        
+        li::before {
+            content: '•';
+            color: gold;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        
+        .warning-box {
+            background: rgba(255, 51, 51, 0.2);
+            border: 2px solid #ff3333;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 30px 0;
+            text-align: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: #ff9999;
+            animation: pulse 2s infinite;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .social-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-card {
+            flex: 1;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .social-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: gold;
+        }
+        
+        .social-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            transform: translateY(-3px);
+        }
+        
+        .follow-text {
+            margin-top: 15px;
+            font-style: italic;
+            color: #ccc;
+            font-size: 16px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://a.top4top.io/p_3471rkc7l1.jpg" alt="DAMZS STORE" class="logo">
+            <h1 class="title">ALL PAYMENT DAMZS STORE</h1>
+        </div>
+        
+        <div class="warning-box">
+            ⚠️ HARAP SERTAKAN BUKTI TRANSFER KE ADMIN SETELAH PEMBAYARAN! ⚠️
+        </div>
+        
+        <div class="payment-section">
+            <h2 class="section-title"><i class="fas fa-wallet"></i> PEMBAYARAN VIA DANA</h2>
+            <div class="payment-info">
+                <div class="account-number">082129071128</div>
+                <button class="copy-btn" onclick="copyToClipboard('082129071128')">
+                    <i class="fas fa-copy"></i> SALIN NOMOR
+                </button>
+            </div>
+            
+            <div class="instructions">
+                <h3 class="instructions-title"><i class="fas fa-list-ol"></i> TATA CARA TRANSFER:</h3>
+                <ol>
+                    <li>Buka aplikasi DANA di smartphone Anda</li>
+                    <li>Pilih menu "Kirim" atau "Transfer"</li>
+                    <li>Masukkan nomor DANA <strong>082129071128</strong></li>
+                    <li>Masukkan nominal pembayaran sesuai pesanan</li>
+                    <li>Periksa kembali detail transaksi sebelum melanjutkan</li>
+                    <li>Konfirmasi pembayaran dengan PIN DANA Anda</li>
+                    <li>Simpan bukti transfer/screenshot halaman konfirmasi</li>
+                    <li>Kirim bukti ke admin melalui WhatsApp</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="payment-section">
+            <h2 class="section-title"><i class="fas fa-qrcode"></i> PEMBAYARAN VIA QRIS</h2>
+            <img src="https://b.top4top.io/p_3471qzt601.jpg" alt="QRIS DAMZS STORE" class="qris-image">
+            
+            <div class="instructions">
+                <h3 class="instructions-title"><i class="fas fa-list-ol"></i> TATA CARA PEMBAYARAN:</h3>
+                <ol>
+                    <li>Buka aplikasi dompet digital/mobile banking yang mendukung QRIS</li>
+                    <li>Pilih menu "Scan QR" atau "Bayar dengan QRIS"</li>
+                    <li>Arahkan kamera ke QR code di atas</li>
+                    <li>Masukkan nominal pembayaran sesuai pesanan</li>
+                    <li>Periksa kembali detail merchant sebelum melanjutkan</li>
+                    <li>Konfirmasi pembayaran dengan PIN/verifikasi Anda</li>
+                    <li>Simpan bukti pembayaran/screenshot halaman konfirmasi</li>
+                    <li>Kirim bukti ke admin melalui WhatsApp</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="warning-box">
+            🚨 JANGAN LUPA UNTUK MENGIRIMKAN BUKTI TRANSFER KE ADMIN! 🚨
+        </div>
+        
+        <div class="social-section">
+            <div class="social-card">
+                <div class="social-icon"><i class="fab fa-whatsapp" style="color: #25D366;"></i></div>
+                <h3 class="social-title">KONTAK ADMIN</h3>
+                <p>Kirim bukti transfer ke WhatsApp Admin</p>
+                <a href="https://wa.me/6282129071128" class="social-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+            
+            <div class="social-card">
+                <div class="social-icon"><i class="fab fa-tiktok" style="color: #69C9D0;"></i></div>
+                <h3 class="social-title">FOLLOW TIKTOK</h3>
+                <p>Follow TikTok Admin untuk update terbaru</p>
+                <a href="https://www.tiktok.com/@damzs_69" class="social-link" target="_blank" style="background: linear-gradient(135deg, #69C9D0, #EE1D52);">
+                    <i class="fab fa-tiktok"></i> TikTok
+                </a>
+                <p class="follow-text">Follow bre🫵</p>
+            </div>
+            
+            <div class="social-card">
+                <div class="social-icon"><i class="fab fa-instagram" style="color: #E1306C;"></i></div>
+                <h3 class="social-title">FOLLOW INSTAGRAM</h3>
+                <p>Follow Instagram Admin untuk konten eksklusif</p>
+                <a href="https://www.instagram.com/damzs_69?igsh=MTdpYTM1MnAzbnM4aQ==" class="social-link" target="_blank" style="background: linear-gradient(135deg, #E1306C, #F77737);">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <p class="follow-text">Follow bre🫵</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2023 DAMZS STORE | Semua transaksi aman dan terjamin
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor DANA berhasil disalin: ' + text + '\n\nSilahkan lanjutkan pembayaran di aplikasi DANA dan jangan lupa kirim bukti transfer ke admin!');
+            }, function(err) {
+                console.error('Gagal menyalin teks: ', err);
+                alert('Gagal menyalin nomor, silahkan salin manual: ' + text);
+            });
+        }
+    </script>
+</body>
+  </html>
